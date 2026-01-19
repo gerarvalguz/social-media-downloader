@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,6 +12,7 @@
     <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
+
 <body>
     <div class="background-gradients">
         <div class="blob blob-1"></div>
@@ -23,15 +25,27 @@
                 <i class="fa-solid fa-cloud-arrow-down"></i>
                 <h1>SocialSaver</h1>
             </div>
+            <button id="settingsBtn" class="settings-btn" title="Configurar API Key">
+                <i class="fa-solid fa-gear"></i>
+            </button>
             <p class="tagline">Descarga videos de tus redes favoritas en segundos.</p>
         </header>
 
         <section class="downloader-card">
             <div class="input-group">
                 <i class="fa-solid fa-link input-icon"></i>
-                <input type="url" id="videoUrl" placeholder="Pega el enlace de Facebook, Instagram o Twitter aquí..." autocomplete="off">
+                <input type="url" id="videoUrl" placeholder="Pega el enlace de Facebook, Instagram o Twitter aquí..."
+                    autocomplete="off">
+                <div class="input-actions">
+                    <button id="clearBtn" class="input-action-btn" title="Limpiar">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                    <button id="pasteBtn" class="input-action-btn" title="Pegar desde portapapeles">
+                        <i class="fa-solid fa-paste"></i>
+                    </button>
+                </div>
             </div>
-            
+
             <button id="downloadBtn" class="cta-button">
                 <span class="btn-text">Descargar Video</span>
                 <i class="fa-solid fa-arrow-right btn-icon"></i>
@@ -54,23 +68,88 @@
                 <i class="fa-brands fa-twitter" style="color: #1DA1F2;"></i>
                 <span>Twitter / X</span>
             </div>
+            <div class="feature fade-in">
+                <i class="fa-brands fa-tiktok" style="color: #ffffff;"></i>
+                <span>TikTok</span>
+            </div>
         </section>
-        
+
         <footer class="footer">
             <p>Hecho con <i class="fa-solid fa-heart"></i> para la web abierta.</p>
+            <p>Gerarvalguz ™</p>
         </footer>
     </main>
-    
+
     <!-- Modal for Result -->
     <div id="resultModal" class="modal hidden">
         <div class="modal-content">
-            <span class="close-modal">&times;</span>
+            <span class="close-modal" id="closeResultModal">&times;</span>
             <div id="videoPreviewContainer">
                 <!-- Video info and download button will be injected here -->
             </div>
         </div>
     </div>
 
+    <!-- Modal for Settings -->
+    <div id="settingsModal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close-modal" id="closeSettingsModal">&times;</span>
+            <h2 style="margin-bottom: 1.5rem; text-align: center;">Configuración de API</h2>
+
+            <label class="input-label">RapidAPI Key</label>
+            <div class="input-group">
+                <i class="fa-solid fa-key input-icon"></i>
+                <input type="text" id="apiKeyInput" placeholder="Ej: xxxxxxxxxxxxxxxxxxxxxxxxxxxxx..."
+                    autocomplete="off">
+            </div>
+
+            <label class="input-label">RapidAPI Host</label>
+            <div class="input-group">
+                <i class="fa-solid fa-server input-icon"></i>
+                <input type="text" id="apiHostInput" placeholder="Ej: social-downloader.p.rapidapi.com"
+                    autocomplete="off">
+            </div>
+
+            <label class="input-label">API Endpoint URL (Base)</label>
+            <div class="input-group">
+                <i class="fa-solid fa-link input-icon"></i>
+                <input type="text" id="apiUrlInput" placeholder="Ej: https://.../get?url=" autocomplete="off">
+            </div>
+
+            <label class="input-label">Método HTTP</label>
+            <div class="input-group">
+                <i class="fa-solid fa-code-branch input-icon"></i>
+                <select id="apiMethodInput">
+                    <option value="GET">GET (Por defecto)</option>
+                    <option value="POST">POST (Para snap-video3, etc)</option>
+                </select>
+            </div>
+
+            <div class="input-group" style="display: flex; align-items: center; gap: 10px; padding: 0.5rem 0;">
+                <input type="checkbox" id="corsProxyInput" style="width: auto; height: auto;">
+                <label for="corsProxyInput" style="cursor: pointer; color: var(--text-main); font-size: 0.95rem;">
+                    Activar Proxy CORS (Recomendado si falla la conexión)
+                </label>
+            </div>
+
+            <p
+                style="font-size: 0.8rem; color: #94a3b8; margin-bottom: 1.5rem; line-height: 1.5; background: rgba(0,0,0,0.2); padding: 10px; border-radius: 8px;">
+                <strong>¿Dónde encuentro esto?</strong><br>
+                En RapidAPI > Endpoints:<br>
+                1. <code>Key</code>: Campo 'x-rapidapi-key' en Header Parameters.<br>
+                2. <code>Host</code>: Campo 'x-rapidapi-host' en Header Parameters.<br>
+                3. <code>URL</code>: Usa la URL general/universal. <br>
+                <em>Ejemplo recomendado:</em>
+                <code>https://social-media-video-downloader.p.rapidapi.com/smvd/get/all</code>
+            </p>
+
+            <button id="saveSettingsBtn" class="cta-button">
+                Guardar Configuración
+            </button>
+        </div>
+    </div>
+
     <script src="script.js"></script>
 </body>
+
 </html>

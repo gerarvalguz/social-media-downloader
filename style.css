@@ -4,10 +4,13 @@
     --input-bg: rgba(15, 23, 42, 0.6);
     --text-main: #f8fafc;
     --text-muted: #94a3b8;
-    --accent-color: #8b5cf6; /* Violet */
+    --accent-color: #8b5cf6;
+    /* Violet */
     --accent-hover: #7c3aed;
-    --gradient-1: #c026d3; /* Fuchsia */
-    --gradient-2: #4f46e5; /* Indigo */
+    --gradient-1: #c026d3;
+    /* Fuchsia */
+    --gradient-2: #4f46e5;
+    /* Indigo */
     --glass-border: rgba(255, 255, 255, 0.1);
     --font-main: 'Outfit', sans-serif;
     --shadow-lg: 0 10px 25px -5px rgba(0, 0, 0, 0.3), 0 8px 10px -6px rgba(0, 0, 0, 0.2);
@@ -69,8 +72,13 @@ body {
 }
 
 @keyframes floating {
-    0% { transform: translate(0, 0); }
-    100% { transform: translate(30px, 50px); }
+    0% {
+        transform: translate(0, 0);
+    }
+
+    100% {
+        transform: translate(30px, 50px);
+    }
 }
 
 /* Layout */
@@ -100,7 +108,8 @@ body {
 }
 
 .logo i {
-    color: #e879f9; /* Fallback */
+    color: #e879f9;
+    /* Fallback */
     background: linear-gradient(to right, #e879f9, #818cf8);
     -webkit-background-clip: text;
     background-clip: text;
@@ -108,8 +117,31 @@ body {
 }
 
 .tagline {
-    color: var(--text-muted);
     font-size: 1.1rem;
+}
+
+.settings-btn {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid var(--glass-border);
+    color: var(--text-muted);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+.settings-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    color: var(--text-main);
+    transform: rotate(90deg);
 }
 
 /* Glass Card */
@@ -135,6 +167,14 @@ body {
     margin-bottom: 1.5rem;
 }
 
+.input-label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin-left: 0.5rem;
+}
+
 .input-icon {
     position: absolute;
     left: 1.2rem;
@@ -145,9 +185,12 @@ body {
     pointer-events: none;
 }
 
-input[type="url"] {
+input[type="url"],
+input[type="text"],
+select {
     width: 100%;
-    padding: 1.2rem 1.2rem 1.2rem 3rem;
+    padding: 1.2rem 6.5rem 1.2rem 3rem;
+    /* Increased right padding for buttons */
     background: var(--input-bg);
     border: 2px solid transparent;
     border-radius: 12px;
@@ -158,14 +201,50 @@ input[type="url"] {
     outline: none;
 }
 
-input[type="url"]:focus {
+input[type="url"]:focus,
+input[type="text"]:focus,
+select:focus {
     border-color: var(--accent-color);
     background: rgba(15, 23, 42, 0.8);
     box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.2);
 }
 
-input[type="url"]::placeholder {
+input[type="url"]::placeholder,
+input[type="text"]::placeholder {
     color: rgba(148, 163, 184, 0.6);
+}
+
+.input-actions {
+    position: absolute;
+    right: 0.8rem;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    gap: 0.5rem;
+}
+
+.input-action-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    color: var(--text-muted);
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    font-size: 0.9rem;
+}
+
+.input-action-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    color: var(--text-main);
+}
+
+.input-action-btn:active {
+    transform: scale(0.95);
 }
 
 /* Button */
@@ -196,7 +275,7 @@ input[type="url"]::placeholder {
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
     transition: 0.5s;
 }
 
@@ -230,7 +309,9 @@ input[type="url"]::placeholder {
 }
 
 @keyframes spin {
-    to { transform: rotate(360deg); }
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 /* Message Area */
@@ -255,8 +336,15 @@ input[type="url"]::placeholder {
 }
 
 @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(-5px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(-5px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* Features */
@@ -308,8 +396,15 @@ input[type="url"]::placeholder {
 }
 
 @keyframes heartbeat {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.2); }
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.2);
+    }
 }
 
 /* Modal */

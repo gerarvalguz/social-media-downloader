@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SocialSaver - Descargador de Videos</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="background-gradients">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+    </div>
+
+    <main class="container">
+        <header class="header">
+            <div class="logo">
+                <i class="fa-solid fa-cloud-arrow-down"></i>
+                <h1>SocialSaver</h1>
+            </div>
+            <p class="tagline">Descarga videos de tus redes favoritas en segundos.</p>
+        </header>
+
+        <section class="downloader-card">
+            <div class="input-group">
+                <i class="fa-solid fa-link input-icon"></i>
+                <input type="url" id="videoUrl" placeholder="Pega el enlace de Facebook, Instagram o Twitter aquí..." autocomplete="off">
+            </div>
+            
+            <button id="downloadBtn" class="cta-button">
+                <span class="btn-text">Descargar Video</span>
+                <i class="fa-solid fa-arrow-right btn-icon"></i>
+                <div class="spinner hidden"></div>
+            </button>
+
+            <div id="messageArea" class="message-area hidden"></div>
+        </section>
+
+        <section class="features">
+            <div class="feature fade-in">
+                <i class="fa-brands fa-facebook-f" style="color: #1877F2;"></i>
+                <span>Facebook</span>
+            </div>
+            <div class="feature fade-in">
+                <i class="fa-brands fa-instagram" style="color: #E4405F;"></i>
+                <span>Instagram</span>
+            </div>
+            <div class="feature fade-in">
+                <i class="fa-brands fa-twitter" style="color: #1DA1F2;"></i>
+                <span>Twitter / X</span>
+            </div>
+        </section>
+        
+        <footer class="footer">
+            <p>Hecho con <i class="fa-solid fa-heart"></i> para la web abierta.</p>
+        </footer>
+    </main>
+    
+    <!-- Modal for Result -->
+    <div id="resultModal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div id="videoPreviewContainer">
+                <!-- Video info and download button will be injected here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
